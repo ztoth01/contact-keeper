@@ -33,6 +33,7 @@ const AuthState = props => {
     }
     try {
       const res = await axios.get('/api/auth');
+      console.log(res);
       dispatch({
         type: USER_LOADED,
         payload: res.data
@@ -45,10 +46,16 @@ const AuthState = props => {
   }
 
   // Register user
-  const registerUser = async formData => {
+  const registerUser = async data => {
+    const { name, email, password, profileImage } = data;
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('profileImage', profileImage);
     const config = {
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'multipart/form-data'
       }
     }
     try {

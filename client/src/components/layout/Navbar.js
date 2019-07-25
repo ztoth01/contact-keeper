@@ -9,7 +9,7 @@ const Navbar = ({ title, icon }) => {
   const authContext = useContext(AuthContext);
   const contactContext = useContext(ContactContext);
   const { isAuthenticated, logout, user } = authContext;
-  const { clearContacts } = contactContext
+  const { clearContacts } = contactContext;
 
   const onLogout = () => {
     logout();
@@ -18,6 +18,13 @@ const Navbar = ({ title, icon }) => {
 
   const authLinks = (
     <Fragment>
+      {user && user.profileImage && (
+        <img
+          src={user.profileImage.path}
+          className="round-img"
+          alt="avatar-img"
+          style={{ width: '40px' }} />
+      )}
       <li>Hello {user && user.name}</li>
       <li>
         <a href="#!" onClick={onLogout}>

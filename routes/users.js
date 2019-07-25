@@ -4,8 +4,37 @@ const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const config = require('config');
 const jwt = require('jsonwebtoken');
+//const multer = require('multer');
+
 // Express validator
 const { check, validationResult } = require('express-validator');
+
+// // Image upload
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, './uploads/');
+//   },
+//   filename: (req, file, cb) => {
+//     console.log(file, 'filename@@@@@@@@@@')
+//     cb(null, new Date().toISOString() + file.originalname);
+//   }
+// });
+
+// const fileFilter = (req, file, cb) => {
+//   if (file.mimetype === 'image/png' || file.mimetype === 'image/jpg') {
+//     cb(null, true);
+//   } else {
+//     cb(null, false);
+//   }
+// }
+
+// const upload = multer({
+//   storage: storage,
+//   fileFilter: fileFilter,
+//   limits: {
+//     fileSize: 1024 * 1024 * 3
+//   }
+// });
 
 // @route   POST api/users
 // @desc    Register a user
@@ -17,6 +46,18 @@ router.post('/', [
 ],
   // Validation
   async (req, res) => {
+    if (req.files === null) {
+      return res.status(400).json({ msg: 'No file was uploaded' });
+    }
+    const profileImage = {};
+    const file = req.files.profileImage;
+    file.mv(`./uploads/${file.name}`, err => {
+      if (err) {
+        return res.status(500).send(err);
+      }
+      profileImage.path = `./uploads/${file.name}`;
+      profileImage.filename = file.name;
+    });
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -31,7 +72,8 @@ router.post('/', [
       user = new User({
         name,
         email,
-        password
+        password,
+        profileImage
       });
       // password encryption
       const salt = await bcrypt.genSalt(10);

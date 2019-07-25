@@ -27,7 +27,7 @@ const App = () => {
           <Router>
             <Fragment>
               <Navbar />
-              <div className="container">
+              <div className="main">
                 <Alerts />
                 <Switch>
                   <Route exact path="/register" component={Register} />
