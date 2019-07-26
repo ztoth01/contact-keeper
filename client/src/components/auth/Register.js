@@ -24,19 +24,23 @@ const Register = props => {
     from: { maxHeight: '130px' },
   });
 
+  const formFields = useRef(null);
+
   const fadeRef = useRef();
   const fade = useSpring({
     ref: fadeRef,
-    to: { opacity: open ? '1' : '0' }
+    to: { opacity: open ? '1' : '0', transform: open ? 'translateY(0px)' : 'translateY(30px)' },
+    from: { transform: 'translateY(30px)' }
   });
 
-  useChain(open ? [animateRef, fadeRef] : [fadeRef, animateRef], [0, open ? 0.5 : 1]);
+  useChain(open ? [animateRef, fadeRef] : [fadeRef, animateRef], [0, open ? 0.2 : 0.4]);
 
   const { registerUser, error, clearErrors, isAuthenticated } = authContext;
   const { setAlert } = alertContext;
   const { name, email, password, password2, profileImage } = user;
 
   useEffect(() => {
+    console.log(formFields.current)
     if (isAuthenticated) {
       props.history.push('/');
     }
@@ -91,15 +95,15 @@ const Register = props => {
           }}>Click to close</span></div>)}
       <h1>Account <span className='text-primary'>Register</span></h1>
       <form onSubmit={onSubmit}>
-        <animated.div className="form-group" style={fade}>
+        <animated.div ref={formFields} className="form-group" style={fade}>
           <label htmlFor="name">Name</label>
           <input type="text" name="name" value={name} onChange={onChange} required />
         </animated.div>
-        <animated.div className="form-group" style={fade}>
+        <animated.div ref={formFields} className="form-group" style={fade}>
           <label htmlFor="email">Email</label>
           <input type="email" name="email" value={email} onChange={onChange} required />
         </animated.div>
-        <animated.div className="form-group" style={fade}>
+        <animated.div ref={formFields} className="form-group" style={fade}>
           <label htmlFor="password">Password</label>
           <input type="password" name="password" value={password} onChange={onChange} required minLength="6" />
         </animated.div>
