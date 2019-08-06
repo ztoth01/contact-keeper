@@ -338,6 +338,7 @@ textarea {
 
 .form-group {
   margin: 1.2rem 0;
+  position: relative;
 }
 
 .form-group input,
@@ -490,7 +491,7 @@ table th {
   height: calc(2.25rem + 2px);
   padding: .375rem .75rem;
   line-height: 1.5;
-  color: #495057;
+  color: #495057 !important;
   background-color: #fff;
   border: 1px solid #ced4da;
   border-radius: .25rem;
@@ -518,4 +519,19 @@ table th {
 
 .custom-file-input:lang(en)~.custom-file-label::after {
   content: "Browse";
+}
+
+.item-enter {
+  opacity: 0;
+}
+.item-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.item-exit {
+  opacity: 1;
+}
+.item-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
 }
