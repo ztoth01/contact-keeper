@@ -1,31 +1,41 @@
-import React, { useContext, useRef, useEffect } from 'react';
-import ContactContext from '../../context/contact/contactContext';
+import React, { useContext, useRef, useEffect } from "react";
+import ContactContext from "../../context/contact/contactContext";
 
-const Filter = () => {
-
+const ContactFilter = () => {
   const contactContext = useContext(ContactContext);
-  const { filterContact, clearFilter, filtered } = contactContext;
-  const text = useRef('');
+  const { contacts, filterContact, clearFilter, filtered } = contactContext;
+  const text = useRef("");
 
   useEffect(() => {
     if (!filtered) {
-      text.current.value = '';
+      text.current.value = "";
     }
-  })
+  }, [contacts, filtered]);
 
   const onChange = e => {
-    if (text.current.value !== '') {
+    if (text.current.value !== "") {
       filterContact(e.target.value);
     } else {
       clearFilter();
     }
-  }
+  };
+
+  const dynamicStyle =
+    contacts === null || contacts.length === 0
+      ? { display: "none" }
+      : { display: "block" };
 
   return (
-    <form>
-      <input type="text" ref={text} placeholder="Filter Contacts..." name="search" onChange={onChange} />
+    <form style={dynamicStyle}>
+      <input
+        type="text"
+        ref={text}
+        placeholder="Filter Contacts..."
+        name="search"
+        onChange={onChange}
+      />
     </form>
-  )
-}
+  );
+};
 
-export default Filter;
+export default ContactFilter;

@@ -6,7 +6,7 @@
   --dark-color: #333333;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
-  --success-color: #28a745;
+  --success-color: #026873;
 }
 
 * {
@@ -22,11 +22,17 @@ body {
   color: #F7F7F7;
 }
 
-.main{
+#root{
   background: linear-gradient(to bottom, #F7F7F7, #FFE9BB );
-  min-height: calc(100vh - 80px);
+}
+
+.main{
+  min-height: calc(100vh - 32px);
   height: auto;
   display: flex;
+  flex-direction: column;
+  max-width: 1280px;
+  margin: auto;
 }
 
 a {
@@ -99,8 +105,10 @@ img {
 /* Cards */
 .card {
   padding: 1rem;
-  border: #ccc 1px dotted;
   margin: 0.7rem 0;
+  box-shadow: 10px 10px 30px rgba(103,82,148,.5);
+  background: linear-gradient(to bottom, #65D4DF, #AB88E9 230%);
+  border-radius: 10px;
 }
 
 /* List */
@@ -306,6 +314,7 @@ input[type='submit']{
 
 .round-img {
   border-radius: 50%;
+  margin-right: 10px;
 }
 
 /* Forms */
@@ -359,6 +368,15 @@ textarea {
   position: relative;
 }
 
+.form-container ::placeholder,
+.form-container input[type='email'],
+.form-container input[type='password'],
+.form-container input[type='text'],
+.form-container select,
+.form-container textarea{
+  color: #ffffff;
+}
+
 .form-container h1,
 h2,
 h3 {
@@ -391,6 +409,10 @@ table th {
 
 .navbar ul {
   display: flex;
+}
+
+.navbar li {
+  align-self: center;
 }
 
 .navbar a {
