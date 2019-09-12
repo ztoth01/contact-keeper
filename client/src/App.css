@@ -116,6 +116,14 @@ img {
   border-radius: 10px;
 }
 
+.card li a{
+  color: #ffffff;
+  transition: color 300ms;
+}
+
+.card li a:hover{
+  color: #e0e0e0;
+}
 /* List */
 .list {
   margin: 0.5rem 0;

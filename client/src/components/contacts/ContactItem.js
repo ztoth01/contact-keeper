@@ -34,12 +34,17 @@ const ContactItem = ({ contact }) => {
       <ul className="list">
         {email && (
           <li>
-            <i className="fas fa-envelope-open" /> {email}
+            <i className="fas fa-envelope-open" />
+            <a href={`mailto:${email}`} target="_top">
+              {" "}
+              {email}
+            </a>
           </li>
         )}
         {phone && (
           <li>
-            <i className="fas fa-phone" /> {phone}
+            <i className="fas fa-phone" />
+            <a href={`tel:${phone}`}> {phone}</a>
           </li>
         )}
       </ul>
