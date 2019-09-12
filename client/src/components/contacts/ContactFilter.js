@@ -33,6 +33,7 @@ const ContactFilter = () => {
         placeholder="Filter Contacts..."
         name="search"
         onChange={onChange}
+        className="filter-field"
       />
     </form>
   );

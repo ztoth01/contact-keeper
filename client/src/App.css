@@ -32,7 +32,8 @@ body {
   display: flex;
   flex-direction: column;
   max-width: 1280px;
-  margin: auto;
+  width: 90%;
+  margin: 60px auto;
 }
 
 a {
@@ -102,10 +103,14 @@ img {
   text-align: left;
 }
 
+.fa-minus, .fa-times{
+  align-self: center;
+}
+
 /* Cards */
 .card {
   padding: 1rem;
-  margin: 0.7rem 0;
+  margin: 1.2rem 0;
   box-shadow: 10px 10px 30px rgba(103,82,148,.5);
   background: linear-gradient(to bottom, #65D4DF, #AB88E9 230%);
   border-radius: 10px;
@@ -345,6 +350,12 @@ textarea {
   background: transparent;
 }
 
+.main .filter-field{
+  border: 1px solid #999999;
+  box-shadow: 5px 5px 15px rgba(103,82,148,.5);
+  background: #ffffff;
+}
+
 .form-group {
   margin: 1.2rem 0;
   position: relative;
@@ -359,7 +370,7 @@ textarea {
 .form-container {
   align-self: flex-start;
   max-width: 500px;
-  margin: auto;
+  margin: 20px auto 0 auto;
   overflow: hidden;
   padding: 4rem 6rem;
   background: linear-gradient(to bottom, #65D4DF, #AB88E9 120%);
@@ -407,6 +418,10 @@ table th {
   opacity: 0.9;
 }
 
+.navbar > div{
+  font-family: 'Abril Fatface', cursive;
+}
+
 .navbar ul {
   display: flex;
 }
@@ -419,6 +434,7 @@ table th {
   color: #fff;
   padding: 0.45rem;
   margin: 0 0.25rem;
+  font-family: 'Abril Fatface', cursive;
 }
 
 .navbar a:hover {

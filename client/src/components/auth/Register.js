@@ -83,34 +83,26 @@ const Register = props => {
           style={{
             display: "flex",
             position: "absolute",
-            top: "30px"
+            top: "20px",
+            right: "30px"
           }}
           onClick={() => set(open => true)}
         >
           <i className="fas fa-minus" />
-          <span
-            style={{
-              textAlign: "center",
-              alignSelf: "center",
-              marginRight: "5px"
-            }}
-          >
-            Click to open
-          </span>
+          <span>Click to open</span>
         </div>
       ) : (
-        <div style={{ display: "flex" }} onClick={() => set(open => false)}>
-          {" "}
+        <div
+          style={{
+            display: "flex",
+            position: "absolute",
+            top: "20px",
+            right: "30px"
+          }}
+          onClick={() => set(open => false)}
+        >
           <i className="fas fa-times" />
-          <span
-            style={{
-              position: "absolute",
-              top: "30px",
-              textAlign: "center"
-            }}
-          >
-            Click to close
-          </span>
+          <span>Click to close</span>
         </div>
       )}
       <h1>
